@@ -2,7 +2,11 @@
 #include "DictionaryTrie.h"
 
 /* Create a new Dictionary that uses a Trie back end */
-DictionaryTrie::DictionaryTrie(){}
+DictionaryTrie::DictionaryTrie()
+{
+  root = new MTNode();
+  isize = 0;
+}
 
 /* Insert a word with its frequency into the dictionary.
  * Return true if the word was inserted, and false if it
@@ -10,13 +14,40 @@ DictionaryTrie::DictionaryTrie(){}
  * invalid (empty string) */
 bool DictionaryTrie::insert(std::string word, unsigned int freq)
 {
-  return false;
+  
+  int ascii;
+  MTNode* curr = root;
+  for(unsigned int i=0; i<word.length(); i++){
+    ascii = word.at(i)-97;
+    if(ascii<0||ascii>26){
+      return false;
+    }
+    if(!curr->children[ascii]){
+      curr->children[ascii] = new MTNode();
+    }
+    curr = curr->children[ascii];
+  }
+  if(curr->isWord){
+    return false;
+  }
+  curr->isWord = true;
+  curr->freq = freq;
+  return true;
 }
 
 /* Return true if word is in the dictionary, and false otherwise */
 bool DictionaryTrie::find(std::string word) const
 {
-  return false;
+  int ascii;
+  MTNode* curr = root;
+  for(unsigned int i=0; i<word.length(); i++){
+    ascii = word.at(i)-97;
+    curr = curr->children[ascii];
+    if(!curr){
+      return false;
+    }
+  }
+  return curr->isWord;
 }
 
 /* Return up to num_completions of the most frequent completions
@@ -33,6 +64,15 @@ std::vector<std::string> DictionaryTrie::predictCompletions(std::string prefix, 
 {
   std::vector<std::string> words;
   return words;
+}
+
+//Constructor for a node in multiway trie
+MTNode::MTNode(void) {
+  for(int i = 0; i < 26; ++i) {
+    children[i] = NULL;
+  }
+  freq = 0;
+  isWord = false;
 }
 
 /* Destructor */

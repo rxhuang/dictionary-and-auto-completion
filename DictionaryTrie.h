@@ -9,6 +9,17 @@
 #include <vector>
 #include <string>
 
+//Node calss for a multiway trie
+class MTNode{
+public:
+  
+  bool isWord;  // whether the node is a word node or not
+  unsigned int freq;
+  MTNode* children[26]; // 26 children for each node, one for each letter
+  MTNode();// MTNode constructor
+};
+
+
 /**
  *  The class for a dictionary ADT, implemented as a trie
  *  You may implement this class as either a mulit-way trie
@@ -18,7 +29,7 @@
 class DictionaryTrie
 {
 public:
-
+  
   /* Create a new Dictionary that uses a Trie back end */
   DictionaryTrie();
 
@@ -48,6 +59,9 @@ public:
   ~DictionaryTrie();
 
 private:
+  MTNode* root;
+  
+  unsigned int isize;
   // Add your own data members and methods here
 };
 

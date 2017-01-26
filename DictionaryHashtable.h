@@ -7,6 +7,7 @@
 #define DICTIONARY_HASHTABLE_H
 
 #include <string>
+#include <unordered_set>
 
 /**
  *  The class for a dictionary ADT, implemented as a Hashtable
@@ -18,7 +19,8 @@
 class DictionaryHashtable
 {
 public:
-
+  
+  std::unordered_set<std::string>* table;
   /* Create a new Dictionary that uses a Hashset back end */
   DictionaryHashtable();
 

@@ -7,6 +7,7 @@
 #define DICTIONARY_BST_H
 
 #include <string>
+#include <set>
 
 /**
  *  The class for a dictionary ADT, implemented as a BST
@@ -18,7 +19,8 @@
 class DictionaryBST
 {
 public:
-
+  
+  std::set<std::string>* tree;
   /* Create a new Dictionary that uses a BST back end */
   DictionaryBST();
 
