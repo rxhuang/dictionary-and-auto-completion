@@ -18,8 +18,11 @@ bool DictionaryTrie::insert(std::string word, unsigned int freq)
   int ascii;
   MTNode* curr = root;
   for(unsigned int i=0; i<word.length(); i++){
-    ascii = word.at(i)-97;
-    if(ascii<0||ascii>26){
+    ascii = word.at(i)-96;
+    if(ascii==-64){
+      ascii=0;
+    }
+    if(ascii<0||ascii>27){
       return false;
     }
     if(!curr->children[ascii]){
@@ -41,7 +44,10 @@ bool DictionaryTrie::find(std::string word) const
   int ascii;
   MTNode* curr = root;
   for(unsigned int i=0; i<word.length(); i++){
-    ascii = word.at(i)-97;
+    ascii = word.at(i)-96;
+    if(ascii<0||ascii>27){
+      return false;
+    }
     curr = curr->children[ascii];
     if(!curr){
       return false;
@@ -68,7 +74,7 @@ std::vector<std::string> DictionaryTrie::predictCompletions(std::string prefix, 
 
 //Constructor for a node in multiway trie
 MTNode::MTNode(void) {
-  for(int i = 0; i < 26; ++i) {
+  for(int i = 0; i < 27; ++i) {
     children[i] = NULL;
   }
   freq = 0;

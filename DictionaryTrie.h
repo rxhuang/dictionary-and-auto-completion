@@ -15,7 +15,7 @@ public:
   
   bool isWord;  // whether the node is a word node or not
   unsigned int freq;
-  MTNode* children[26]; // 26 children for each node, one for each letter
+  MTNode* children[27]; // 27 children for each node, one for each letter and one for space bar.
   MTNode();// MTNode constructor
 };
 
