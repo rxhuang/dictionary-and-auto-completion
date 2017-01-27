@@ -45,11 +45,11 @@ bool DictionaryTrie::find(std::string word) const
   MTNode* curr = root;
   for(unsigned int i=0; i<word.length(); i++){
     ascii = word.at(i)-96;
-    if(ascii<0||ascii>27){
-      return false;
-    }
     if(ascii==-64){
       ascii=0;
+    }
+    if(ascii<0||ascii>27){
+      return false;
     }
     curr = curr->children[ascii];
     if(!curr){
