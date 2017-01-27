@@ -16,7 +16,7 @@ bool DictionaryHashtable::insert(std::string word)
 /* Return true if word is in the dictionary, and false otherwise */
 bool DictionaryHashtable::find(std::string word) const
 {
-  return *(table->find(word)) == word;
+  return table->find(word) != table->end();
 }
 
 /* Destructor */

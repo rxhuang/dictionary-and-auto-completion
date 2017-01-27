@@ -54,6 +54,7 @@ bool DictionaryTrie::find(std::string word) const
     if(!curr->children[ascii]){
       return false;
     }
+    curr = curr->children[ascii];
   }
   return curr->isWord;
 }
