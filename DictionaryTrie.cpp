@@ -48,6 +48,9 @@ bool DictionaryTrie::find(std::string word) const
     if(ascii<0||ascii>27){
       return false;
     }
+    if(ascii==-64){
+      ascii=0;
+    }
     curr = curr->children[ascii];
     if(!curr){
       return false;
