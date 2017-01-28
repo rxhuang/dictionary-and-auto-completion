@@ -8,6 +8,25 @@ DictionaryTrie::DictionaryTrie()
   isize = 0;
 }
 
+MTNode* DictionaryTrie::getNode(std::string word){
+  int ascii;
+  MTNode* curr = root;
+  for(unsigned int i=0; i<word.length(); i++){
+    ascii = word.at(i)-96;
+    if(ascii==-64){
+      ascii=0;
+    }
+    if(ascii<0||ascii>27){
+      return false;
+    }
+    if(!curr->children[ascii]){
+      return false;
+    }
+    curr = curr->children[ascii];
+  }
+  return curr;
+}
+
 /* Insert a word with its frequency into the dictionary.
  * Return true if the word was inserted, and false if it
  * was not (i.e. it was already in the dictionary or it was

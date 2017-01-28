@@ -43,7 +43,7 @@ int testFind() {
       cout << "Inserting: \"" << *wit << "\"... ";
       t_bst = d_bst.insert(*wit);
       t_ht = d_ht.insert(*wit);
-      tt = dt.insert(*wit, 1);
+      tt = dt.insert(*wit, 24);
       //cout << t_bst << " " << t_ht << " "<< tt << "... ";
       if(!t_bst)
         {
@@ -61,6 +61,9 @@ int testFind() {
         {
           cout << "PASSED! :D ";
         }
+      if(dt.getNode("harry")->freq==24){
+	cout << "passed freq!!!!!!";
+      }
       cout << endl;
     }
   cout << endl;

@@ -12,9 +12,9 @@
 //Node calss for a multiway trie
 class MTNode{
 public:
-  
+
+  int freq;
   bool isWord;  // whether the node is a word node or not
-  unsigned int freq;
   MTNode* children[27]; // 27 children for each node, one for each letter and one for space bar.
   MTNode();// MTNode constructor
 };
@@ -33,6 +33,7 @@ public:
   /* Create a new Dictionary that uses a Trie back end */
   DictionaryTrie();
 
+  MTNode* getNode(std::string word);
   /* Insert a word with its frequency into the dictionary.
    * Return true if the word was inserted, and false if it
    * was not (i.e. it was already in the dictionary or it was
