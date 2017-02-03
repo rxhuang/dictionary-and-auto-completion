@@ -1,9 +1,9 @@
-#include<fstream>
-#include<iostream>
-#include<string>
-#include<algorithm>
-#include<set>
-#include<cstdlib>
+#include <fstream>
+#include <iostream>
+#include <string>
+#include <algorithm>
+#include <set>
+#include <cstdlib>
 #include "util.h"
 #include "DictionaryTrie.h"
 #include "DictionaryBST.h"
@@ -11,7 +11,8 @@
 #define LETTERS 26
 using namespace std;
 
-int testFind() {
+/*
+void testFind() {
   //Initialize words
   vector<std::string> words;
   vector<string>::iterator wit;
@@ -67,7 +68,7 @@ int testFind() {
       cout << endl;
     }
   cout << endl;
-  
+
   cout << "Finding words in Dictionaries..." << endl;
 
   wit = words.begin();
@@ -98,12 +99,12 @@ int testFind() {
     }
 
   return 0;
-}
+}*/
 
 
 int main(int argc, char** argv)
 {
-
+  /*
   //Initialize words
   vector<std::string> words;
   vector<string>::iterator wit;
@@ -124,7 +125,7 @@ int main(int argc, char** argv)
   words.push_back("cse");
   words.push_back("crucio");
   words.push_back("autocomplete");
-  
+
   cout << "Inserting into Dictionaries..." << endl;
 
   wit = words.begin();
@@ -186,13 +187,17 @@ int main(int argc, char** argv)
     }
   cout << endl;
 /*You are supposed to add more test cases in this file */
-  
+
+  Vector<string> words;
   Utils test;
   DictionaryTrie trie;
-  std::ifstream file;
-  file.open("freq_dict.txt"); 
+  ifstream file;
+  file.open("freq_dict.txt");
+  test.load_vector(words,file);
   test.load_dict(trie,file);
+
+  //testFind();
+
   
-  testFind();
   return 0;
 }
