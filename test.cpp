@@ -187,6 +187,12 @@ int main(int argc, char** argv)
   cout << endl;
 /*You are supposed to add more test cases in this file */
   
+  Utils test;
+  DictionaryTrie trie;
+  std::ifstream file;
+  file.open("freq_dict.txt"); 
+  test.load_dict(trie,file);
+  
   testFind();
   return 0;
 }

@@ -13,8 +13,9 @@
 class MTNode{
 public:
 
-  int freq;
-  bool isWord;  // whether the node is a word node or not
+  unsigned int freq;
+  bool isWord; // whether the node is a word node or not
+  std::string str;
   MTNode* children[27]; // 27 children for each node, one for each letter and one for space bar.
   MTNode();// MTNode constructor
 };
@@ -61,9 +62,9 @@ public:
 
 private:
   MTNode* root;
-  
-  unsigned int isize;
   // Add your own data members and methods here
+
+  std::vector<std::string> predictCompletionsHelper(MTNode* curr, unsigned int num_completions);
 };
 
 #endif // DICTIONARY_TRIE_H
