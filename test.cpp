@@ -185,22 +185,24 @@ int main(int argc, char** argv)
         }
       cout << endl;
     }
-  cout << endl;
+  cout << endl;*/
 /*You are supposed to add more test cases in this file */
 
   vector<string> words;
   Utils test;
   DictionaryTrie trie;
   ifstream file;
-  file.open("freq_dict.txt");
+  file.open("smalldictionary.txt");
   test.load_vector(words,file);
+  file.clear();
+  file.seekg(0, ios::beg);
   test.load_dict(trie,file);
 
   //testFind();
-  
+  if(trie.find("a")) cout << "success" << endl;
   vector<string> completions;
-  completions = trie.predictCompletions("face", 10);
-  for(int i = 0; i < 10 ; i ++){
+  completions = trie.predictCompletions("a", 10);
+  for(int i = 0; i < completions.size() ; i ++){
     cout << completions[i] << endl;
   }
   return 0;

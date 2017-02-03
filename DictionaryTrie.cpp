@@ -3,6 +3,7 @@
 #include <iostream>
 #include <stack>
 
+using namespace std;
 /* Create a new Dictionary that uses a Trie back end */
 DictionaryTrie::DictionaryTrie()
 {
@@ -140,6 +141,7 @@ std::vector<std::string> DictionaryTrie::predictCompletionsHelper(MTNode* curr, 
 	if(search[i]->freq<n->freq){
 	  search.insert(search.begin()+i,n);
 	  add = true;
+          break;
 	}
       }
       if(!add){
