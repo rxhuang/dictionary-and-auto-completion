@@ -188,7 +188,7 @@ int main(int argc, char** argv)
   cout << endl;
 /*You are supposed to add more test cases in this file */
 
-  Vector<string> words;
+  vector<string> words;
   Utils test;
   DictionaryTrie trie;
   ifstream file;
@@ -197,7 +197,11 @@ int main(int argc, char** argv)
   test.load_dict(trie,file);
 
   //testFind();
-
   
+  vector<string> completions;
+  completions = trie.predictCompletions("face", 10);
+  for(int i = 0; i < 10 ; i ++){
+    cout << completions[i] << endl;
+  }
   return 0;
 }
