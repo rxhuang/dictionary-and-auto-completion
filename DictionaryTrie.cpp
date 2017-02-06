@@ -10,6 +10,9 @@ DictionaryTrie::DictionaryTrie()
   root = new MTNode();
 }
 
+/* Getter method for a node in the Trie, used for testing
+ * param: the string of the node
+ */
 MTNode* DictionaryTrie::getNode(std::string word){
   int ascii;//The child position of the letter
   MTNode* curr = root;
@@ -117,47 +120,56 @@ std::vector<std::string> DictionaryTrie::predictCompletions(std::string prefix, 
       return words;
     }
     curr = curr->children[ascii];
-  }
-  return predictCompletionsHelper(curr, num_completions);
+  }//End of for loop, curr should point to last letter of prefix
+  return predictCompletionsHelper(curr, num_completions); //use helper method
 }
 
+/* Helper method for predictCompletions
+ * param: pointer to the last letter of the prefix and the number of completions
+ * wanted
+ * return: same as predictCompletions
+ * uses breadth first search to get all possible completion and sorts them and
+ * returns required number of completions in a vector
+ */
 std::vector<std::string> DictionaryTrie::predictCompletionsHelper(MTNode* curr, unsigned int num_completions){
-  std::vector<std::string> words;
-  std::stack<MTNode*> stack;
-  std::vector<MTNode*> search;
-  MTNode* n;
-  bool add = false;
-  stack.push(curr);
-  while(!stack.empty()){
-    n = stack.top();
-    stack.pop();
-    if(n->isWord){
-      add = false;
-      if(search.size()==0){
+  std::vector<std::string> words;//the vector we will return
+  std::stack<MTNode*> stack;// stack used during BFS
+  std::vector<MTNode*> search;// vector used to sort completion according to frequency
+  MTNode* n; // pointer to top of stack
+  bool add = false; //bool indicatingf whether or not we have already added the node
+  stack.push(curr); //push last letter of prefix into stack
+  while(!stack.empty()){ 
+    n = stack.top(); 
+    stack.pop(); //pop stack and let n point to the item poped
+    if(n->isWord){ //if n is a word
+      add = false; //set add to false
+      if(search.size()==0){ //if the vector we are adding to is empty
 	search.push_back(n);
-	add = true;
+	add = true; //we added n, so set n to true
       }
-      for(unsigned int i=0; i<search.size();i++){
-	if(search[i]->freq<n->freq){
-	  search.insert(search.begin()+i,n);
-	  add = true;
-          break;
-	}
+      else{ // if the vector we are adding to is not empty
+        for(unsigned int i=0; i<search.size();i++){ //compare the frequency of n to all existing words in the vector
+	  if(search[i]->freq<n->freq){ //if n has larger frequency than a word, put in front of the word
+	    search.insert(search.begin()+i,n);
+	    add = true;
+            break;
+	  }
+         }
       }
-      if(!add){
+      if(!add){//if we have not added n, n is amller than all words in the vector, so add it to the end
 	search.push_back(n);
       }
     }
-    for(unsigned int i=0; i<27; i++){
+    for(unsigned int i=0; i<27; i++){//for all existing children of n, push to stack(part of or BFS
       if(n->children[i]){
 	stack.push(n->children[i]);
       }
     }
-  }
+  }//We will end up with a vector(search) containing all possible completions sorted with largest frequency at the beginning
     
 
-    for(unsigned int i=0; i<search.size();i++){
-      words.insert(words.begin()+i,n->str);
+    for(unsigned int i=0; i<num_completions;i++){//we only add num_completions number of words to the final vector we return
+      words.insert(words.begin()+i,search[i]->str);
     }
     return words;
 }

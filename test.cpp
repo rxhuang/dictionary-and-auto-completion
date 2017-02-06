@@ -199,9 +199,9 @@ int main(int argc, char** argv)
   test.load_dict(trie,file);
 
   //testFind();
-  if(trie.find("a")) cout << "success" << endl;
+  //if(trie.find("a")) cout << "success" << endl;
   vector<string> completions;
-  completions = trie.predictCompletions("a", 10);
+  completions = trie.predictCompletions("a", 5);
   for(int i = 0; i < completions.size() ; i ++){
     cout << completions[i] << endl;
   }
