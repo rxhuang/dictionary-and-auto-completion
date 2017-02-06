@@ -201,7 +201,7 @@ int main(int argc, char** argv)
   //testFind();
   //if(trie.find("a")) cout << "success" << endl;
   vector<string> completions;
-  completions = trie.predictCompletions("a", 5);
+  completions = trie.predictCompletions("", 15);
   for(int i = 0; i < completions.size() ; i ++){
     cout << completions[i] << endl;
   }

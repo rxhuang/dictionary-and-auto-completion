@@ -97,12 +97,14 @@ bool DictionaryTrie::find(std::string word) const
  * is a word (and is among the num_completions most frequent completions
  * of the prefix)
  */
-std::vector<std::string> DictionaryTrie::predictCompletions(std::string prefix, unsigned int num_completions)
+std::vector<std::string> DictionaryTrie::predictCompletions(std::string prefix
+    , unsigned int num_completions)
 {
   std::vector<std::string> words;
   int ascii;
   MTNode* curr = root;
-  if(prefix.length()==0){ //if prefix is empty, print error message and return empty vector
+  if(prefix.length()==0){ //if prefix is empty, print error message and return 
+    //empty vector
     std::cout<< "Invalid Input. Please retry with correct input"<<std::endl;
     return words;
   }
@@ -131,7 +133,8 @@ std::vector<std::string> DictionaryTrie::predictCompletions(std::string prefix, 
  * uses breadth first search to get all possible completion and sorts them and
  * returns required number of completions in a vector
  */
-std::vector<std::string> DictionaryTrie::predictCompletionsHelper(MTNode* curr, unsigned int num_completions){
+std::vector<std::string> DictionaryTrie::predictCompletionsHelper(MTNode* curr, 
+    unsigned int num_completions){
   std::vector<std::string> words;//the vector we will return
   std::stack<MTNode*> stack;// stack used during BFS
   std::vector<MTNode*> search;// vector used to sort completion according to frequency
@@ -148,27 +151,34 @@ std::vector<std::string> DictionaryTrie::predictCompletionsHelper(MTNode* curr, 
 	add = true; //we added n, so set n to true
       }
       else{ // if the vector we are adding to is not empty
-        for(unsigned int i=0; i<search.size();i++){ //compare the frequency of n to all existing words in the vector
-	  if(search[i]->freq<n->freq){ //if n has larger frequency than a word, put in front of the word
+        for(unsigned int i=0; i<search.size();i++){ //compare the frequency of 
+          //n to all existing words in the vector
+	  if(search[i]->freq<n->freq){ //if n has larger frequency than a word,
+            //put in front of the word
 	    search.insert(search.begin()+i,n);
 	    add = true;
             break;
 	  }
          }
       }
-      if(!add){//if we have not added n, n is amller than all words in the vector, so add it to the end
+      if(!add){//if we have not added n, n is amller than all words in the 
+        //vector, so add it to the end
 	search.push_back(n);
       }
     }
-    for(unsigned int i=0; i<27; i++){//for all existing children of n, push to stack(part of or BFS
+    for(unsigned int i=0; i<27; i++){//for all existing children of n, push to 
+      //stack(part of or BFS
       if(n->children[i]){
 	stack.push(n->children[i]);
       }
     }
-  }//We will end up with a vector(search) containing all possible completions sorted with largest frequency at the beginning
+  }//We will end up with a vector(search) containing all possible completions 
+  //sorted with largest frequency at the beginning
     
-
-    for(unsigned int i=0; i<num_completions;i++){//we only add num_completions number of words to the final vector we return
+    if(num_completions > search.size())//return as many valid num completions as possible
+      num_completions = search.size();
+    for(unsigned int i=0; i<num_completions;i++){//we only add num_completions 
+      //number of words to the final vector we return
       words.insert(words.begin()+i,search[i]->str);
     }
     return words;
