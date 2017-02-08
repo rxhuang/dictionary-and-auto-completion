@@ -32,7 +32,7 @@ int main(int argc, char** argv){
     cerr<<"Invalid input"<<'\n';
     return -1;
   }
-  
+
   cout << "***Benchmarking dictionary BST***" << endl;
   int size = min_size;
   int incr = step_size;
@@ -48,6 +48,48 @@ int main(int argc, char** argv){
     timer.begin_timer();
     for(string w:wordsToFind){
       bst.find(w);
+    }
+    long long time = timer.end_timer();
+    cout << size << "\t" << time  << endl;
+    size += incr;
+  }
+
+  cout << "***Benchmarking dictionary Hashtable***" << endl;
+  int size = min_size;
+  int incr = step_size;
+  for(int i = 0; i < num_iterations ; i++){
+    in.open(argv[4], ios::in);
+    in.seekg(0, ios_base::beg);
+    DictionaryHashtable hash;
+    vector<string> wordsToFind;
+    util.load_dict(hash, in, min_size + i*step_size);
+    util.load_vector(wordsToFind, in, 100);
+    in.close();
+    vector<string> lexicon;
+    timer.begin_timer();
+    for(string w:wordsToFind){
+      hash.find(w);
+    }
+    long long time = timer.end_timer();
+    cout << size << "\t" << time  << endl;
+    size += incr;
+  }
+
+  cout << "***Benchmarking dictionary Trie***" << endl;
+  int size = min_size;
+  int incr = step_size;
+  for(int i = 0; i < num_iterations ; i++){
+    in.open(argv[4], ios::in);
+    in.seekg(0, ios_base::beg);
+    DictionaryTrie trie;
+    vector<string> wordsToFind;
+    util.load_dict(trie, in, min_size + i*step_size);
+    util.load_vector(wordsToFind, in, 100);
+    in.close();
+    vector<string> lexicon;
+    timer.begin_timer();
+    for(string w:wordsToFind){
+      trie.find(w);
     }
     long long time = timer.end_timer();
     cout << size << "\t" << time  << endl;
