@@ -53,7 +53,21 @@ int main(int argc, char** argv){
 
   cout << "***Benchmarking dictionary BST***" << endl;
   for(int i = 0; i < num_iterations ; i++){
-    DictionaryBST bst;
-    util.load_dict(); 
+    in.open(argv[4], ios::in);
+    in.seekg(0, ios_base::beg);
+    DictionaryBST bst = new DictionaryBST();
+    if((int)word_count < min_size*step_size){
+      cout << "Dict size too small." << endl;
+      util.load_dict(*bst, in, word_count);
+    }
+    else
+      util.load_dict(bst, in, min_size + i*step_size);
+    in.close();
+    int test[num_iterations];
+    for(int i = 0; i < num_iterations ; i++){
+      timer.begin_timer();
+    }
+
+
   }
 }
