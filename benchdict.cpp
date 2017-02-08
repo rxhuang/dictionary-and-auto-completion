@@ -55,8 +55,8 @@ int main(int argc, char** argv){
   }
 
   cout << "***Benchmarking dictionary Hashtable***" << endl;
-  int size = min_size;
-  int incr = step_size;
+  size = min_size;
+  incr = step_size;
   for(int i = 0; i < num_iterations ; i++){
     in.open(argv[4], ios::in);
     in.seekg(0, ios_base::beg);
@@ -76,8 +76,8 @@ int main(int argc, char** argv){
   }
 
   cout << "***Benchmarking dictionary Trie***" << endl;
-  int size = min_size;
-  int incr = step_size;
+  size = min_size;
+  incr = step_size;
   for(int i = 0; i < num_iterations ; i++){
     in.open(argv[4], ios::in);
     in.seekg(0, ios_base::beg);
