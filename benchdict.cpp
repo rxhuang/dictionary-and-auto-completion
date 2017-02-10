@@ -30,7 +30,7 @@ using namespace std;
  * do not exist in a dictionary using dictionaries with 
  * BST, Hashtable, and MWT as backend
  */
- main(int argc, char** argv){
+int main(int argc, char** argv){
   //check for  amount of arguments
   if (argc!=5) {
     cout<<"Invalid number of arguments." << endl;
