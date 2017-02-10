@@ -194,4 +194,5 @@ int main(int argc, char** argv){
        << averageCollision << endl;
   cout << "The worst case steps that would be needed to find a word is " << worstCaseFind << endl;
 
+  return 0;
 }
