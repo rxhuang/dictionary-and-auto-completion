@@ -11,8 +11,8 @@
 #define LETTERS 26
 using namespace std;
 
-/*
-void testFind() {
+
+int testFind() {
   //Initialize words
   vector<std::string> words;
   vector<string>::iterator wit;
@@ -99,12 +99,12 @@ void testFind() {
     }
 
   return 0;
-}*/
+}
 
 
 int main(int argc, char** argv)
 {
-  /*
+  
   //Initialize words
   vector<std::string> words;
   vector<string>::iterator wit;
@@ -185,24 +185,24 @@ int main(int argc, char** argv)
         }
       cout << endl;
     }
-  cout << endl;*/
+  cout << endl;
 /*You are supposed to add more test cases in this file */
 
-  vector<string> words;
+  testFind();
+
+  vector<string> words2;
   Utils test;
   DictionaryTrie trie;
   ifstream file;
   file.open("smalldictionary.txt");
-  test.load_vector(words,file);
+  test.load_vector(words2,file);
   file.clear();
   file.seekg(0, ios::beg);
   test.load_dict(trie,file);
 
-  //testFind();
-  //if(trie.find("a")) cout << "success" << endl;
   vector<string> completions;
-  completions = trie.predictCompletions("", 15);
-  for(int i = 0; i < completions.size() ; i ++){
+  completions = trie.predictCompletions("a", 15);
+  for(unsigned int i = 0; i < completions.size() ; i ++){
     cout << completions[i] << endl;
   }
   return 0;
