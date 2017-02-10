@@ -1,6 +1,13 @@
 #include "util.h"
 #include "DictionaryBST.h"
 
+/* Name: Ruoxin Huang and Muyang Wu
+   Date: Feb 9
+   Overview: implements a dictionary using BST as backend
+   Assignment number: 2
+*/
+
+
 /* Create a new Dictionary that uses a BST back end */
 DictionaryBST::DictionaryBST(){
   tree = new std::set<std::string>;
@@ -15,6 +22,7 @@ bool DictionaryBST::insert(std::string word)
 /* Return true if word is in the dictionary, and false otherwise */
 bool DictionaryBST::find(std::string word) const
 {
+  //if the find iterator does not point to end
   return tree->find(word) != tree->end();
 }
 

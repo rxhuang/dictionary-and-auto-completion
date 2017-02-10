@@ -3,6 +3,13 @@
 #include <iostream>
 #include <stack>
 
+/**
+ * Name: Ruoxin Huang and Muyang Wu
+ * Date: Feb 9
+ * Overview: implements a dictionary using MWT as backend
+ * Assignment number: 2
+ */
+
 using namespace std;
 /* Create a new Dictionary that uses a Trie back end */
 DictionaryTrie::DictionaryTrie()
@@ -145,7 +152,7 @@ std::vector<std::string> DictionaryTrie::predictCompletionsHelper(MTNode* curr,
     n = stack.top(); 
     stack.pop(); //pop stack and let n point to the item poped
     if(n->isWord){ //if n is a word
-      add = false; //set add to false
+      add = false; 
       if(search.size()==0){ //if the vector we are adding to is empty
 	search.push_back(n);
 	add = true; //we added n, so set n to true

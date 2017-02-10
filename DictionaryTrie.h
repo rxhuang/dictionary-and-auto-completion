@@ -3,6 +3,12 @@
  *  Authors: Jor-el Briones, Christine Alvarado
  */
 
+/**
+ * Name: Ruoxin Huang and Muyang Wu
+ * Date: Feb 9
+ * Overview: header file for DictionaryTrie
+ * Assignment number: 2
+ */
 #ifndef DICTIONARY_TRIE_H
 #define DICTIONARY_TRIE_H
 
@@ -13,9 +19,9 @@
 class MTNode{
 public:
 
-  unsigned int freq;
+  unsigned int freq; // the frequency of the word
   bool isWord; // whether the node is a word node or not
-  std::string str;
+  std::string str; //the string the node stores
   MTNode* children[27]; // 27 children for each node, one for each letter and one for space bar.
   MTNode();// MTNode constructor
 };
@@ -61,6 +67,7 @@ public:
   ~DictionaryTrie();
 
 private:
+  //pointer to root node
   MTNode* root;
   // Add your own data members and methods here
 

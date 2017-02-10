@@ -2,6 +2,13 @@
  *  CSE 100 PA3 C++ Autocomplete
  *  Authors: Jor-el Briones, Christine Alvarado
  */
+/** 
+ * Name: Ruoxin Huang and Muyang Wu
+ * Date: Feb 9
+ * Overview: header file for DictionaryBST
+ * Assignment number: 2
+ */
+
 
 #ifndef DICTIONARY_BST_H
 #define DICTIONARY_BST_H

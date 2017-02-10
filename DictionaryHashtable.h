@@ -3,6 +3,13 @@
  *  Authors: Jor-el Briones, Christine Alvarado
  */
 
+/**
+ * Name: Ruoxin Huang and Muyang Wu
+ * Date: Feb 9
+ * Overview: header file for DictionaryHashtable
+ * Assignment number: 2
+ */
+
 #ifndef DICTIONARY_HASHTABLE_H
 #define DICTIONARY_HASHTABLE_H
 
