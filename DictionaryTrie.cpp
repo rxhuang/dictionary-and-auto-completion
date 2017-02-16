@@ -203,4 +203,13 @@ MTNode::MTNode(void) {
 }
 
 /* Destructor */
-DictionaryTrie::~DictionaryTrie(){}
+DictionaryTrie::~DictionaryTrie(MTNode* n){
+  if (n==NULL)
+    return;
+  for(int i=0; i<27){
+    if (n->children[i])
+      deleteAll(n->left);
+  }
+  delete n;
+  return;
+}
