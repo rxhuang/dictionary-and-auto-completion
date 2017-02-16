@@ -70,7 +70,8 @@ private:
   //pointer to root node
   MTNode* root;
   // Add your own data members and methods here
-
+  static void deleteAll(MTNode* n);
+  
   std::vector<std::string> predictCompletionsHelper(MTNode* curr, unsigned int num_completions);
 };
 

@@ -17,6 +17,11 @@ DictionaryTrie::DictionaryTrie()
   root = new MTNode();
 }
 
+DictionaryTrie::~DictionaryTrie()
+{
+  deleteAll(root);
+}
+
 /* Getter method for a node in the Trie, used for testing
  * param: the string of the node
  */
@@ -203,12 +208,12 @@ MTNode::MTNode(void) {
 }
 
 /* Destructor */
-DictionaryTrie::~DictionaryTrie(MTNode* n){
+void DictionaryTrie::deleteAll(MTNode* n){
   if (n==NULL)
     return;
-  for(int i=0; i<27){
+  for(int i=0; i<27;i++){
     if (n->children[i])
-      deleteAll(n->left);
+      deleteAll(n->children[i]);
   }
   delete n;
   return;
