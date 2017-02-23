@@ -40,7 +40,7 @@ public:
   /* Create a new Dictionary that uses a Trie back end */
   DictionaryTrie();
 
-  MTNode* getNode(std::string word);
+  MTNode* getNode(std::string word, bool add);
   /* Insert a word with its frequency into the dictionary.
    * Return true if the word was inserted, and false if it
    * was not (i.e. it was already in the dictionary or it was
@@ -48,7 +48,7 @@ public:
   bool insert(std::string word, unsigned int freq);
 
   /* Return true if word is in the dictionary, and false otherwise */
-  bool find(std::string word) const;
+  bool find(std::string word);
 
   /* Return up to num_completions of the most frequent completions
    * of the prefix, such that the completions are words in the dictionary.
@@ -72,7 +72,7 @@ private:
   // Add your own data members and methods here
   static void deleteAll(MTNode* n);
   
-  std::vector<std::string> predictCompletionsHelper(MTNode* curr, unsigned int num_completions);
+  std::vector<MTNode*> predictCompletionsHelper(MTNode* curr);
 };
 
 #endif // DICTIONARY_TRIE_H

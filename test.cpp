@@ -62,9 +62,6 @@ int testFind() {
         {
           cout << "PASSED! :D ";
         }
-      if(dt.getNode("harry")->freq==24){
-	cout << "passed freq!!!!!!";
-      }
       cout << endl;
     }
   cout << endl;
