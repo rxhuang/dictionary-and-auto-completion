@@ -5,6 +5,6 @@ http://www.ngrams.info/
 https://en.wiktionary.org/wiki/Wiktionary:Frequency_lists#Top_English_words_lists
 http://www.becomeawordgameexpert.com/dictionary.htm
 
-Given a string, suggest a list of possible completions using a tree like dictionary
+Given a string, suggests a list of possible completions using a tree like dictionary
 Used Mutiway search tree to implement dictionary
 Used BSF to suggest auto completion.
